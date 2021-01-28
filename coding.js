@@ -6,16 +6,15 @@ let longestGreeting = greetings.sort((a,b) => a.length < b.length ? 1 : -1)[0]
 
 console.log(longestGreeting)
 
-//let palindrome = ['heart', 'racecar', 'tissue']
+//reduce -- boil an array down to a single value
+function longestString(stringArray){
+    return stringArray.reduce((accum, elem) => {
+    return (elem.length > accum.length) ? elem : accum
+}, '')
+}
+let students = ['Bobby', 'Rebecca', 'Scar', 'Dennis']
+console.log(longestString(students))
 
-// function findPalindrome(pali) { 
-//     return pali.toLowerCase() === pali.toLowerCase()
-//     .split()
-//     .reverse()
-//     .join()
-// }
-
-// console.log(findPalindrome('racecar'))
 
 // function CheckPalindromeLoops(word){
 //     //normalize the capitalization
@@ -46,3 +45,26 @@ console.log(longestGreeting)
 // }
 // CheckPalindromeLoops('Wow')
 // CheckPalindromeLoops('Rebecca')
+
+const myString = 'the quick brown dog jumps over the lazy fox'
+
+function mostFrequentChar(str){
+    const ignore = `. ,'"?!`
+    const stringArray = str.toUpperCase().split('')
+    let uniqueChars = [...new Set(stringArray)]
+    //obtain list of unique char in a str
+    let freqChar = ''
+    let freqCount = 0
+    //loop through string counting occurence of each unique character 
+    uniqueChars.forEach(char => {
+    if(!ignore.includes(char)){
+        let thisCharCount = stringArray.filter(el => el === char).length
+        if(thisCharCount > freqCount) {
+            freqCount = thisCharCount
+            freqChar = char
+        }
+    }
+})
+    return freqChar
+}
+console.log(`Most frequent character: "${mostFrequentChar(myString)}"`)
