@@ -4,7 +4,7 @@ import NewPersonForm from './here'
 function AnotherPerson() {
     return(
         <section>
-            {NewPersonForm}
+            <NewPersonForm/>
         </section>
     )
 }
